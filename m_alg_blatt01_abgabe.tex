@@ -111,6 +111,81 @@
 	
 \section*{Aufgabe 1}
 
-\section*{Aufgabe 2}
+\section*{Aufgabe 5}
+\subsection*{$a)$}
+\subsubsection*{$I)$}
+Worstcase für insert:
+\begin{itemize}
+	\item Erstellen des neuen Arrays in $\mathcal{O}(1)$
+	\item Kopieren der Elemente in den neuen Array in $\mathcal{O}(n)$
+	\item Hinzufügen des neuen Elements in $\mathcal{O}(1)$
+\end{itemize}
+$\Rightarrow$ Laufzeit von insert $\mathcal{O}(n + 2) \Rightarrow \mathcal{O}(n)$
+\subsubsection*{$II)$}
+Wähle Potentialfunktion $\Phi = 2n - |A|$ mit $n$ als Anzahl an Elementen im Array und $|A|$ als länge des Arrays. Da $A$ immer mindestens halb voll ist $\Rightarrow \Phi \geq 0$.
 
+\begin{itemize}
+	\item Insert ohne resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$ mit $c_i$ als tatsächliche Kosten.\\
+		$a_i = 1 + ((2n+1) - |A| - (2n - |A|)$\\
+		$a_i = 1 + 2n+1 - |A| -2n + |A|$\\
+		$a_i = 1 + 1 = 2$
+	\item  Insert mit resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$ mit $c_i = n +1$, da $n$ mal kopieren plus einmal erstellen des neuen Arrays\\
+		$a_i = n+1 + (2n-|A| - (2n-1-|A|))$, da geresized wird ist $n = \frac{|A|}{2} \Rightarrow |A|=2n$\\
+		$a_i = n+1+ (2n - 2n - (2n - 1 -2n))$\\
+		$a_i = n+1+ (2n - 2n - 2n + 1 +2n))$\\
+		$a_i = n+1 + 1 = n+2$
+	\item Delete ohne resize:\\
+		$a_i = 1 + (2n-1-|A| - (2n - |A|))$\\
+		$a_i = 1 -1 = 0$\\
+\end{itemize}
+Da die tatsächlichen Kosten $\leq$ amortisierte Kosten\\
+$\Rightarrow \sum_{i=1}^{n} c_i \le \sum_{i=1}^{n} a_i = 2+2n+0 = \mathcal{O}(2) + \mathcal{O}(2n) + \mathcal{O}(0) = \mathcal{O}(n)$
+
+\subsection*{$b)$}
+\subsubsection*{$I)$}
+Worstcase für insert ist gleich wie bei $a)$.\\
+Worstcase für delete:
+\begin{itemize}
+	\item Erstelle neuen Array in $\mathcal{O}(1)$
+	\item Kopiere alte elemente in $\mathcal{O}(n)$
+	\item Lösche element in $\mathcal{O}(1)$
+\end{itemize}
+$\Rightarrow \mathcal{O}(n)$.
+
+\subsubsection*{$II)$}
+\begin{itemize}
+	\item Insert ohne resize gleich wie bei $a)$:\\
+		$a_i = 2$
+	\item  Insert mit resize gleich wie bei $a)$:\\
+		$a_i =n+2$	
+	\item Delete ohne resize gleich wie bei $a)$:\\
+		$a_i = 0$
+	\item Delete mit resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$, mit $c_i = n-1+1$ für $n-1$ mal kopieren (da eins gelöscht) und plus eins zum erstellen des neuen Arrays.\\		
+		$a_i = n + (2n - \frac{|A|}{2} - (2n- |A|))$\\
+		$a_i = n + 2n - \frac{|A|}{2} - 2n + |A|$\\
+		$a_i = n + \frac{|A|}{2}$, da geresized wird $\Rightarrow \frac{|A|}{2} = n \Rightarrow |A| = 2n$\\
+		$a_i = n + \frac{2n}{2} = n+n = 2n$
+\end{itemize}
+$\Rightarrow \sum_{i=1}^{n} c_i \le \sum_{i=1}^{n} a_i = 2+2n+0+2n = \mathcal{O}(2) + \mathcal{O}(2n) + \mathcal{O}(0) + \mathcal{O}(2n) = \mathcal{O}(n)$
+\subsection*{$b)$}
+\subsubsection*{$I)$}
+Worstcase laufzeiten gleich wie bei $b)I)$
+\subsubsection*{$II)$}
+\begin{itemize}
+	\item Insert ohne resize gleich wie bei $a)$:\\
+		$a_i = 2$
+	\item  Insert mit resize gleich wie bei $a)$:\\
+		$a_i =n+2$	
+	\item Delete ohne resize gleich wie bei $a)$:\\
+		$a_i = 0$
+	\item Delete mit resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$, mit $c_i = n-1+1$ für $n-1$ mal kopieren (da eins gelöscht) und plus eins zum erstellen des neuen Arrays.\\		
+		$a_i = n + (2n - \frac{|A|}{4} - (2n- |A|))$, da geresized wird $\Rightarrow \frac{|A|}{4} = n \Rightarrow |A| = 4n$\\
+		$a_i = n + 2n -\frac{4n}{4} -2n + 4n$\\
+		$a_i = n -n +4n = 4n$
+\end{itemize}
+$\Rightarrow \sum_{i=1}^{n} c_i \le \sum_{i=1}^{n} a_i = 2+2n+0+4n = \mathcal{O}(2) + \mathcal{O}(2n) + \mathcal{O}(0) + \mathcal{O}(4n) = \mathcal{O}(n)$
 \end{document}
