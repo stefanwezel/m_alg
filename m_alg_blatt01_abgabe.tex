@@ -109,6 +109,48 @@
 	% ----------------------- TODO ---------------------------
 	% Hier werden die Aufgaben/Lösungen eingetragen:
 	
+	
+
+\section*{Augabe 1:}
+\subsection*{(b)}
+$2^{log(n^n)} = n^n \not \in \Omega(2^n)$
+
+\subsection*{(c)}
+$3^n < 5^n \Rightarrow 3^n \in o(5^n)$
+
+\subsection*{(d)}
+$\sqrt{2n^2 + 3n} - n = \sqrt{n(2n + 3)} - n= \sqrt{n} \cdot \sqrt{2n+3} - n$\\
+wegen $-n$ muesste $\sqrt{n} \cdot \sqrt{2n+3} = 2n$ gelten, damit $\in \Theta(n)$ gelten wuerde.\\
+Aber:\\
+$\sqrt{n} \cdot \sqrt{2n+3} \neq 2n$ \\
+also:  $\sqrt{2n^2 + 3n} - n \not \in \Theta(n)$
+
+\subsection*{(e)}
+$\sqrt{n^2 + 3n} - n = \sqrt{n(n + 3)} - n = \sqrt{n} \cdot \sqrt{n+3} - n$\\
+Da $\sqrt{n} \cdot \sqrt{n+3} \neq n+1 \Rightarrow \sqrt{n^2 + 3n} - n \not \in \Theta(n)$  
+
+
+
+\section*{Aufgabe 2}
+\begin{itemize}
+	
+	\item $log(n) < 42n$: trivial\\
+	\\
+	\item $42n < log(n!)$ da Wachstum rechts der ungleichung nicht durch Konstante begrenzt.
+	\\\\
+	\item $log(n!) < 2^{\sqrt{(log n)}}$, da:\\
+	$log(n!) = \sum_{n}^{i=1}log(i) <  2^{\sqrt{(log n)}} = \prod^{log(n)} 2$
+	\\\\
+	\item $2^{\sqrt{(log n)}} < (log(n))^{log(n)}$, da:\\
+	$\prod^{\sqrt{(log n)}}2 < \prod^{log(n)}log(n)$, weil wir zum einen eine hoehere Begrenzung haben und ausserdem links der ungleichung einen konstanten Wert multiplizieren, rechts aber ein von $n$ abhaengiges Produkt haben.\\
+	\\\\
+	\item $(log(n))^{log(n)} < (log(n))^{\sqrt{n}}$, da:\\
+	$\prod^{\sqrt{n}} log(n) >  \prod^{log(n)} log(n)$, weil $\sqrt{n}$ schneller waechst als $log(n)$.\\
+	\\
+	\item $(log(n))^{\sqrt{n}} < (log(log(n)))^n$, da:\\
+	$\prod^{\sqrt{n}} log(n) <  \prod^{n} (log(log(n))$, weil hier $n$ in der Potenz und daher schneller waechst als $\sqrt{(n)}$.\
+\end{itemize} 
+
 
 \section*{Aufgabe 3}
 \subsection*{$a)$}
@@ -145,6 +187,10 @@ $n = 2^k$ da Zweierpotenz.
 	&= 3^k + \frac{2}{3} \cdot3^k -2\\
 	&= 3^k + \frac{5}{3} -2
 \end{align}
+
+
+\section*{Aufgabe 4}
+Da wir das Problem (also das Array) in jedem Suchschritt verkleinern (mindestens halbieren) erreichen wir immer logarithmische Laufzeit. Der unterschied ist nur die Basis des Algorithmus. Im schlechtesten Fall muss das Array so lange verkleinert werden, bis es nur noch aus einem Element besteht. Dies waere der Worst Case. In den meisten anderen Faellen wird das gesuchte Element aber schon vorher getroffen.
 
 \section*{Aufgabe 5}
 \subsection*{$a)$}
@@ -223,50 +269,7 @@ Worstcase laufzeiten gleich wie bei $b)I)$
 		$a_i = n -n +4n = 4n$
 \end{itemize}
 $\Rightarrow \sum_{i=1}^{n} c_i \le \sum_{i=1}^{n} a_i = 2+2n+0+4n = \mathcal{O}(2) + \mathcal{O}(2n) + \mathcal{O}(0) + \mathcal{O}(4n) = \mathcal{O}(n)$
-\end{document}
-=======
-\subsection*{(b)}
-$2^{log(n^n)} = n^n \not \in \Omega(2^n)$
 
-\subsection*{(c)}
-$3^n < 5^n \Rightarrow 3^n \in o(5^n)$
-
-\subsection*{(d)}
-$\sqrt{2n^2 + 3n} - n = \sqrt{n(2n + 3)} - n= \sqrt{n} \cdot \sqrt{2n+3} - n$\\
-wegen $-n$ muesste $\sqrt{n} \cdot \sqrt{2n+3} = 2n$ gelten, damit $\in \Theta(n)$ gelten wuerde.\\
-Aber:\\
-$\sqrt{n} \cdot \sqrt{2n+3} \neq 2n$ \\
-also:  $\sqrt{2n^2 + 3n} - n \not \in \Theta(n)$
-
-\subsection*{(e)}
- $\sqrt{n^2 + 3n} - n = \sqrt{n(n + 3)} - n = \sqrt{n} \cdot \sqrt{n+3} - n$\\
- Da $\sqrt{n} \cdot \sqrt{n+3} \neq n+1 \Rightarrow \sqrt{n^2 + 3n} - n \not \in \Theta(n)$  
-
-
-
-\subsection*{Aufgabe 2}
-\begin{itemize}
-	
-\item $log(n) < 42n$: trivial\\
-\\
-\item $42n < < log(n!)$ da Wachstum rechts der ungleichung nicht durch Konstante begrenzt.
-\\\\
-\item $log(n!) < 2^{\sqrt{(log n)}}$, da:\\
-$log(n!) = \sum_{n}^{i=1}log(i) <  2^{\sqrt{(log n)}} = \prod^{log(n)} 2$
-\\\\
-\item $2^{\sqrt{(log n)}} < (log(n))^{log(n)}$, da:\\
- $\prod^{\sqrt{(log n)}}2 < \prod^{log(n)}log(n)$, weil wir zum einen eine hoehere Begrenzung haben und ausserdem links der ungleichung einen konstanten Wert multiplizieren, rechts aber ein von $n$ abhaengiges Produkt haben.\\
-\\\\
-\item $(log(n))^{log(n)} < (log(n))^{\sqrt{n}}$, da:\\
-$\prod^{\sqrt{n}} log(n) >  \prod^{log(n)} log(n)$, weil $\sqrt{n}$ schneller waechst als $log(n)$.\\
-\\
-\item $(log(n))^{\sqrt{n}} < (log(log(n)))^n$, da:\\
-$\prod^{\sqrt{n}} log(n) <  \prod^{n} (log(log(n))$, weil hier $n$ in der Potenz und daher schneller waechst als $\sqrt{(n)}$.\
-\end{itemize} 
- 
-
-\subsection*{Aufgabe 4}
-Da wir das Problem (also das Array) in jedem Suchschritt verkleinern (mindestens halbieren) erreichen wir immer logarithmische Laufzeit. Der unterschied ist nur die Basis des Algorithmus. Im schlechtesten Fall muss das Array so lange verkleinert werden, bis es nur noch aus einem Element besteht. Dies waere der Worst Case. In den meisten anderen Faellen wird das gesuchte Element aber schon vorher getroffen.
 
 
 \end{document}
