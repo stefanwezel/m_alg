@@ -31,7 +31,7 @@
 \newcommand{\STUDENTA}{Stefan Wezel}
 \newcommand{\STUDENTB}{Lukas Günthner}
 %\newcommand{\STUDENTC}{Gwent Krause}
-\newcommand{\DEADLINE}{29.10.2018}
+\newcommand{\DEADLINE}{\date}
 % ----------------------- TODO ---------------------------
 
 
@@ -110,5 +110,54 @@
 	% Hier werden die Aufgaben/Lösungen eingetragen:
 	
 \section*{Aufgabe 1}
+\subsection*{(a)}
+%\begin{align*}
+%zz.: $4^{n-1} \in \mathcal{O}(2^n)$\\
+$4^{n-1} = 2^{2n-2} = \frac{1}{4} \cdot 2^{2n} \in \mathcal{O}(2^n)$
+%\end{align*}
+
+\subsection*{(b)}
+$2^{log(n^n)} = n^n \not \in \Omega(2^n)$
+
+\subsection*{(c)}
+$3^n < 5^n \Rightarrow 3^n \in o(5^n)$
+
+\subsection*{(d)}
+$\sqrt{2n^2 + 3n} - n = \sqrt{n(2n + 3)} - n= \sqrt{n} \cdot \sqrt{2n+3} - n$\\
+wegen $-n$ muesste $\sqrt{n} \cdot \sqrt{2n+3} = 2n$ gelten, damit $\in \Theta(n)$ gelten wuerde.\\
+Aber:\\
+$\sqrt{n} \cdot \sqrt{2n+3} \neq 2n$ \\
+also:  $\sqrt{2n^2 + 3n} - n \not \in \Theta(n)$
+
+\subsection*{(e)}
+ $\sqrt{n^2 + 3n} - n = \sqrt{n(n + 3)} - n = \sqrt{n} \cdot \sqrt{n+3} - n$\\
+ Da $\sqrt{n} \cdot \sqrt{n+3} \neq n+1 \Rightarrow \sqrt{n^2 + 3n} - n \not \in \Theta(n)$  
+
+
+
+\subsection*{Aufgabe 2}
+\begin{itemize}
+	
+\item $log(n) < 42n$: trivial\\
+\\
+\item $42n < < log(n!)$ da Wachstum rechts der ungleichung nicht durch Konstante begrenzt.
+\\\\
+\item $log(n!) < 2^{\sqrt{(log n)}}$, da:\\
+$log(n!) = \sum_{n}^{i=1}log(i) <  2^{\sqrt{(log n)}} = \prod^{log(n)} 2$
+\\\\
+\item $2^{\sqrt{(log n)}} < (log(n))^{log(n)}$, da:\\
+ $\prod^{\sqrt{(log n)}}2 < \prod^{log(n)}log(n)$, weil wir zum einen eine hoehere Begrenzung haben und ausserdem links der ungleichung einen konstanten Wert multiplizieren, rechts aber ein von $n$ abhaengiges Produkt haben.\\
+\\\\
+\item $(log(n))^{log(n)} < (log(n))^{\sqrt{n}}$, da:\\
+$\prod^{\sqrt{n}} log(n) >  \prod^{log(n)} log(n)$, weil $\sqrt{n}$ schneller waechst als $log(n)$.\\
+\\
+\item $(log(n))^{\sqrt{n}} < (log(log(n)))^n$, da:\\
+$\prod^{\sqrt{n}} log(n) <  \prod^{n} (log(log(n))$, weil hier $n$ in der Potenz und daher schneller waechst als $\sqrt{(n)}$.\
+\end{itemize} 
+ 
+
+\subsection*{Aufgabe 4}
+Da wir das Problem (also das Array) in jedem Suchschritt verkleinern (mindestens halbieren) erreichen wir immer logarithmische Laufzeit. Der unterschied ist nur die Basis des Algorithmus. Im schlechtesten Fall muss das Array so lange verkleinert werden, bis es nur noch aus einem Element besteht. Dies waere der Worst Case. In den meisten anderen Faellen wird das gesuchte Element aber schon vorher getroffen.
+
 
 \end{document}
