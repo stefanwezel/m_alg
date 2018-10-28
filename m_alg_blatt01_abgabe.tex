@@ -1,0 +1,273 @@
+% ----------------------- TODO ---------------------------
+%Template 
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+%\usepackage[ngerman]{babel}
+\usepackage{geometry,forloop,fancyhdr,fancybox,lastpage}
+\usepackage{listings}
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+\geometry{a4paper,left=3cm, right=3cm, top=3cm, bottom=3cm}
+% Diese Daten müssen pro Blatt angepasst werden:
+\newcommand{\NUMBER}{4}
+\newcommand{\EXERCISES}{5}
+% Diese Daten müssen einmalig pro Vorlesung angepasst werden:
+\newcommand{\COURSE}{Methoden der Algorithmik}
+%\newcommand{\TUTOR}{Benjamin Coban}
+\newcommand{\STUDENTA}{Stefan Wezel}
+\newcommand{\STUDENTB}{Lukas Günthner}
+%\newcommand{\STUDENTC}{Gwent Krause}
+\newcommand{\DEADLINE}{\date}
+% ----------------------- TODO ---------------------------
+
+
+
+%Math
+\usepackage{amsmath,amssymb,tabularx}
+
+%Figures
+\usepackage{graphicx,tikz,color,float}
+\graphicspath{ {home/stefan/picures/} }
+\usetikzlibrary{shapes,trees}
+
+%Algorithms
+\usepackage[ruled,linesnumbered]{algorithm2e}
+
+%Kopf- und Fußzeile
+\pagestyle {fancy}
+%\fancyhead[L]{Tutor: \TUTOR}
+\fancyhead[C]{\COURSE}
+\fancyhead[R]{\today}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{Seite \thepage}
+
+%Formatierung der Überschrift, hier nichts ändern
+\def\header#1#2{
+	\begin{center}
+		{\Large\bf Übungsblatt #1}\\
+		{(Abgabetermin #2)}
+	\end{center}
+}
+
+%Definition der Punktetabelle, hier nichts ändern
+\newcounter{punktelistectr}
+\newcounter{punkte}
+\newcommand{\punkteliste}[2]{%
+	\setcounter{punkte}{#2}%
+	\addtocounter{punkte}{-#1}%
+	\stepcounter{punkte}%<-- also punkte = m-n+1 = Anzahl Spalten[1]
+	\begin{center}%
+		\begin{tabularx}{\linewidth}[]{@{}*{\thepunkte}{>{\centering\arraybackslash} X|}@{}>{\centering\arraybackslash}X}
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				\thepunktelistectr &
+			}
+			#2 &  $\Sigma$ \\
+			\hline
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				&
+			} &\\
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				&
+			} &\\
+		\end{tabularx}
+	\end{center}
+}
+
+\begin{document}
+	
+	\begin{tabularx}{\linewidth}{m{0.2 \linewidth}X}
+		\begin{minipage}{\linewidth}
+			\STUDENTA\\
+			\STUDENTB\\
+			%\STUDENTC
+		\end{minipage} & \begin{minipage}{\linewidth}
+			\punkteliste{1}{\EXERCISES}
+		\end{minipage}\\
+	\end{tabularx}
+	
+	%\header{Nr. \NUMBER}{\DEADLINE}
+	
+	% ----------------------- TODO ---------------------------
+	% Hier werden die Aufgaben/Lösungen eingetragen:
+	
+
+\section*{Aufgabe 3}
+\subsection*{$a)$}
+\begin{align}
+	&T(2^k) = a \cdot T(2^{k-1}) + b \cdot 2^k +c\\
+	&= a (a \cdot T(2^{k-2}) + b \cdot 2^{k-1} + c) + b\cdot 2^k +c\\
+	&=a^2 \cdot T(2^{k-2}) + ab \cdot 2^{k-1} + ac +b \cdot2^k +c\\
+	&=a^k \cdot t_1 + b \sum_{i = 0}^{k} a^i \cdot 2^{k-i} + c\sum_{i=0}^{k}a^i\\
+	&=a^k \cdot t_1 + b \cdot \frac{a^k -1}{a-1} \cdot (2^k -1) + c \cdot \frac{a^k -1}{a-1}\\
+	&=a^k \cdot t_1 + \frac{a^k -1}{a-1} \cdot (b \cdot (2^k -1) +c)
+\end{align}
+\subsection*{$c)$}
+$a=1$
+\begin{align}
+	&T(2^k) = T(2^{k-1}) + b \cdot 2^k +c\\
+	&=T(2^{k-2}) + b\cdot 2^{k-1} +b \cdot 2^k + c +c\\
+	&=t_1 + b \cdot \sum_{i=1}^{k}2^i + k \cdot c\\
+	&=t_1 + b \cdot (2^k -1) + k \cdot c\\
+\end{align}
+$a=2$
+\begin{align}
+	&T(2^k) = 2^k \cdot t_1 + (2^k -1) \cdot (b \cdot (2^k -1) +c)
+\end{align}
+
+\subsection*{$d)$}
+$n = 2^k$ da Zweierpotenz.
+\begin{align}
+	&S(2^k) = 3 \cdot S(2^{k-1}) +2\\
+	&= 3\cdot (3\cdot S(2^{k-2}) +2) +2\\
+	&= 3^2 \cdot S(2^{k-2}) + 3 \cdot 2 +2\\
+	&= 3^k + 2 \cdot \sum_{i = 0}^{k-1} 3^i\\
+	&= 3^k + 2\cdot (3^{k-1} - 1)\\
+	&= 3^k + 2 \cdot 3^{k-1} - 2\\
+	&= 3^k + \frac{2}{3} \cdot3^k -2\\
+	&= 3^k + \frac{5}{3} -2
+\end{align}
+
+\section*{Aufgabe 5}
+\subsection*{$a)$}
+\subsubsection*{$I)$}
+Worstcase für insert:
+\begin{itemize}
+	\item Erstellen des neuen Arrays in $\mathcal{O}(1)$
+	\item Kopieren der Elemente in den neuen Array in $\mathcal{O}(n)$
+	\item Hinzufügen des neuen Elements in $\mathcal{O}(1)$
+\end{itemize}
+$\Rightarrow$ Laufzeit von insert $\mathcal{O}(n + 2) \Rightarrow \mathcal{O}(n)$
+\subsubsection*{$II)$}
+Wähle Potentialfunktion $\Phi = 2n - |A|$ mit $n$ als Anzahl an Elementen im Array und $|A|$ als länge des Arrays. Da $A$ immer mindestens halb voll ist $\Rightarrow \Phi \geq 0$.
+
+\begin{itemize}
+	\item Insert ohne resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$ mit $c_i$ als tatsächliche Kosten.\\
+		$a_i = 1 + ((2n+1) - |A| - (2n - |A|)$\\
+		$a_i = 1 + 2n+1 - |A| -2n + |A|$\\
+		$a_i = 1 + 1 = 2$
+	\item  Insert mit resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$ mit $c_i = n +1$, da $n$ mal kopieren plus einmal erstellen des neuen Arrays\\
+		$a_i = n+1 + (2n-|A| - (2n-1-|A|))$, da geresized wird ist $n = \frac{|A|}{2} \Rightarrow |A|=2n$\\
+		$a_i = n+1+ (2n - 2n - (2n - 1 -2n))$\\
+		$a_i = n+1+ (2n - 2n - 2n + 1 +2n))$\\
+		$a_i = n+1 + 1 = n+2$
+	\item Delete ohne resize:\\
+		$a_i = 1 + (2n-1-|A| - (2n - |A|))$\\
+		$a_i = 1 -1 = 0$\\
+\end{itemize}
+Da die tatsächlichen Kosten $\leq$ amortisierte Kosten\\
+$\Rightarrow \sum_{i=1}^{n} c_i \le \sum_{i=1}^{n} a_i = 2+2n+0 = \mathcal{O}(2) + \mathcal{O}(2n) + \mathcal{O}(0) = \mathcal{O}(n)$
+
+\subsection*{$b)$}
+\subsubsection*{$I)$}
+Worstcase für insert ist gleich wie bei $a)$.\\
+Worstcase für delete:
+\begin{itemize}
+	\item Erstelle neuen Array in $\mathcal{O}(1)$
+	\item Kopiere alte elemente in $\mathcal{O}(n)$
+	\item Lösche element in $\mathcal{O}(1)$
+\end{itemize}
+$\Rightarrow \mathcal{O}(n)$.
+
+\subsubsection*{$II)$}
+\begin{itemize}
+	\item Insert ohne resize gleich wie bei $a)$:\\
+		$a_i = 2$
+	\item  Insert mit resize gleich wie bei $a)$:\\
+		$a_i =n+2$	
+	\item Delete ohne resize gleich wie bei $a)$:\\
+		$a_i = 0$
+	\item Delete mit resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$, mit $c_i = n-1+1$ für $n-1$ mal kopieren (da eins gelöscht) und plus eins zum erstellen des neuen Arrays.\\		
+		$a_i = n + (2n - \frac{|A|}{2} - (2n- |A|))$\\
+		$a_i = n + 2n - \frac{|A|}{2} - 2n + |A|$\\
+		$a_i = n + \frac{|A|}{2}$, da geresized wird $\Rightarrow \frac{|A|}{2} = n \Rightarrow |A| = 2n$\\
+		$a_i = n + \frac{2n}{2} = n+n = 2n$
+\end{itemize}
+$\Rightarrow \sum_{i=1}^{n} c_i \le \sum_{i=1}^{n} a_i = 2+2n+0+2n = \mathcal{O}(2) + \mathcal{O}(2n) + \mathcal{O}(0) + \mathcal{O}(2n) = \mathcal{O}(n)$
+\subsection*{$b)$}
+\subsubsection*{$I)$}
+Worstcase laufzeiten gleich wie bei $b)I)$
+\subsubsection*{$II)$}
+\begin{itemize}
+	\item Insert ohne resize gleich wie bei $a)$:\\
+		$a_i = 2$
+	\item  Insert mit resize gleich wie bei $a)$:\\
+		$a_i =n+2$	
+	\item Delete ohne resize gleich wie bei $a)$:\\
+		$a_i = 0$
+	\item Delete mit resize:\\
+		$a_i = c_i + \Phi(i) - \Phi(i-1)$, mit $c_i = n-1+1$ für $n-1$ mal kopieren (da eins gelöscht) und plus eins zum erstellen des neuen Arrays.\\		
+		$a_i = n + (2n - \frac{|A|}{4} - (2n- |A|))$, da geresized wird $\Rightarrow \frac{|A|}{4} = n \Rightarrow |A| = 4n$\\
+		$a_i = n + 2n -\frac{4n}{4} -2n + 4n$\\
+		$a_i = n -n +4n = 4n$
+\end{itemize}
+$\Rightarrow \sum_{i=1}^{n} c_i \le \sum_{i=1}^{n} a_i = 2+2n+0+4n = \mathcal{O}(2) + \mathcal{O}(2n) + \mathcal{O}(0) + \mathcal{O}(4n) = \mathcal{O}(n)$
+\end{document}
+=======
+\subsection*{(b)}
+$2^{log(n^n)} = n^n \not \in \Omega(2^n)$
+
+\subsection*{(c)}
+$3^n < 5^n \Rightarrow 3^n \in o(5^n)$
+
+\subsection*{(d)}
+$\sqrt{2n^2 + 3n} - n = \sqrt{n(2n + 3)} - n= \sqrt{n} \cdot \sqrt{2n+3} - n$\\
+wegen $-n$ muesste $\sqrt{n} \cdot \sqrt{2n+3} = 2n$ gelten, damit $\in \Theta(n)$ gelten wuerde.\\
+Aber:\\
+$\sqrt{n} \cdot \sqrt{2n+3} \neq 2n$ \\
+also:  $\sqrt{2n^2 + 3n} - n \not \in \Theta(n)$
+
+\subsection*{(e)}
+ $\sqrt{n^2 + 3n} - n = \sqrt{n(n + 3)} - n = \sqrt{n} \cdot \sqrt{n+3} - n$\\
+ Da $\sqrt{n} \cdot \sqrt{n+3} \neq n+1 \Rightarrow \sqrt{n^2 + 3n} - n \not \in \Theta(n)$  
+
+
+
+\subsection*{Aufgabe 2}
+\begin{itemize}
+	
+\item $log(n) < 42n$: trivial\\
+\\
+\item $42n < < log(n!)$ da Wachstum rechts der ungleichung nicht durch Konstante begrenzt.
+\\\\
+\item $log(n!) < 2^{\sqrt{(log n)}}$, da:\\
+$log(n!) = \sum_{n}^{i=1}log(i) <  2^{\sqrt{(log n)}} = \prod^{log(n)} 2$
+\\\\
+\item $2^{\sqrt{(log n)}} < (log(n))^{log(n)}$, da:\\
+ $\prod^{\sqrt{(log n)}}2 < \prod^{log(n)}log(n)$, weil wir zum einen eine hoehere Begrenzung haben und ausserdem links der ungleichung einen konstanten Wert multiplizieren, rechts aber ein von $n$ abhaengiges Produkt haben.\\
+\\\\
+\item $(log(n))^{log(n)} < (log(n))^{\sqrt{n}}$, da:\\
+$\prod^{\sqrt{n}} log(n) >  \prod^{log(n)} log(n)$, weil $\sqrt{n}$ schneller waechst als $log(n)$.\\
+\\
+\item $(log(n))^{\sqrt{n}} < (log(log(n)))^n$, da:\\
+$\prod^{\sqrt{n}} log(n) <  \prod^{n} (log(log(n))$, weil hier $n$ in der Potenz und daher schneller waechst als $\sqrt{(n)}$.\
+\end{itemize} 
+ 
+
+\subsection*{Aufgabe 4}
+Da wir das Problem (also das Array) in jedem Suchschritt verkleinern (mindestens halbieren) erreichen wir immer logarithmische Laufzeit. Der unterschied ist nur die Basis des Algorithmus. Im schlechtesten Fall muss das Array so lange verkleinert werden, bis es nur noch aus einem Element besteht. Dies waere der Worst Case. In den meisten anderen Faellen wird das gesuchte Element aber schon vorher getroffen.
+
+
+\end{document}
+>>>>>>> 67dc44fb377ce1b2022321c846b2c428c6fe71cd
