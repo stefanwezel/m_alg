@@ -112,8 +112,31 @@
 	% Hier werden die Aufgaben/Lösungen eingetragen:
 	
 	\section*{Aufgabe 1}
+	\subsection*{$a)$}
+	\begin{align*}
+		&\text{Zu zeigen: }c(S_1) < c(S_2) \Leftrightarrow c'(S_1) < c'(S_2)\\
+		&\\
+		&c(S_1) < c'(S_1) \text{, da } c'(S_1) = |E| \cdot c(S_1) + 1 \text{ und } 0 < |E|\\
+		&\Rightarrow \text{ auch } c(S_2) < c'(S_2)\\
+		&\Rightarrow c(S_1) < c'(S_1) \le c(S_2) < c'(S_2)\\
+		&\Rightarrow c'(S_1) < c'(S_2)\\
+		&\Rightarrow \text{Mincut mit c auch Mincut mit c'}\\
+	\end{align*}
+
+	\subsection*{$b)$}
+	\begin{align*}
+		&\text{Mit }c(S_1) = c(S_2) \text{. Falls } |E_1| < |E_2| \Rightarrow c'(S_1) \overset{?}{<} c'(S_2)\\
+		&\\
+		&|E_1| \cdot c(S_1) + 1 \overset{?}{<} |E_2| \cdot c(S_2) + 1 \text{, da } |E_1| < |E_2| \text{ und } c(S_1) = c(S_2)\\
+		&\Rightarrow |E_1| \cdot c(S_1) + 1 < |E_2| \cdot c(S_2) + 1\\
+		&\Rightarrow c'(S_1) < c'(S_2)\\
+		&\Rightarrow \text{ Mincut mit c' findet mincut mit minimalem E}
+	\end{align*}
 	
+	\subsection*{$c)$}
+	Berechne Normale mincut mit z.B. Stoer-Wagner, jedoch mit veränderter Kapazitätsfunktion $c'$ statt $c$. Aus $a)$ folgt, dass $c'$ auch den mincut mit $c$ findet. Aus $b)$ folgt, dass durch Verwendung von $c'$ der mincut mit minimaler Kantenanzahl gefunden wird. Dadurch ist gegeben, dass Stoer-Wagner mit $c'$ die gewünschte Funktionalität implementiert.
 	
+	\section*{Aufgabe 2:}
 	
 	
 	
