@@ -134,13 +134,21 @@
 	\end{align*}
 	
 	\subsection*{$c)$}
-	Berechne Normale mincut mit z.B. Stoer-Wagner, jedoch mit veränderter Kapazitätsfunktion $c'$ statt $c$. Aus $a)$ folgt, dass $c'$ auch den mincut mit $c$ findet. Aus $b)$ folgt, dass durch Verwendung von $c'$ der mincut mit minimaler Kantenanzahl gefunden wird. Dadurch ist gegeben, dass Stoer-Wagner mit $c'$ die gewünschte Funktionalität implementiert.
+	Berechne Normalen mincut mit z.B. Stoer-Wagner, jedoch mit veränderter Kapazitätsfunktion $c'$ statt $c$. Aus $a)$ folgt, dass $c'$ auch den mincut mit $c$ findet. Aus $b)$ folgt, dass durch Verwendung von $c'$ der mincut mit minimaler Kantenanzahl gefunden wird. Dadurch ist gegeben, dass (z.B.) Stoer-Wagner mit $c'$ die gewünschte Funktionalität implementiert.
+
+	\newpage
 	
 	\section*{Aufgabe 2:}
+	Berechne $f^*$ mit Ford-Fulkerson und speichere residual Graph ab. Wähle im residual Graph alle Kanten von erreichbaren Knoten zu nicht erreichbaren Knoten. Diese Knoten limitieren den maximalen Fluss durch das Netzwerk und sind somit gleichzeitig der Mincut des Netzwerkes (max-flow min-cut Theorem).\\
+	$\mathcal{O}(|E|)$ ist erfüllt wenn man mit einer Adjazenzliste über den residual Graph iteriert, da die Adjazensliste genau $|E$ Einträge hat. 
 	
-	
-	
-	
+	\section*{Aufgabe 3:}	
+	Zu zeigen: $\sum_{v \in V: (s, v) \in E} f(s,v) = \sum_{v \in V: (v, t) \in E} f(v,t)$.\\
+	~\\
+	In Worten: Summe aller Flüsse von der Quelle zu allen von der Quelle ereichbaren Knoten ist gleich der Summe aller Flüsse von Kanten die zur Sinke führen.\\
+	~\\
+	Die Gleichung ist gegeben, da der komplette Fluss der von $s$ wegfließt auch in $t$ hineinfließen muss.\\
+	Wäre dies nicht gegeben würde im Netzwerk von $s$ nach $t$ Flusseinheiten "verloren" gehen, was jedoch ein Widerspruch zur Definition eines Flussnetzwerk ist.
 	
 	
 	
@@ -865,7 +873,7 @@ $\rightarrow$ Max Flow: $170$
 
 \section*{Aufgabe 5}
 \subsection*{a)}
-Zu Beginn, setzen wir alle Kanten, welche die Kapazitäten repräsentieren auf 1. Mithilfe des Maxflow-Mincut Algorithmus, wie er in Aufgabe 3 beschrieben wurde, können wir nun den Mincut berchenen. Da wir alle Kanten zuvor auf 1 gesetzt haben, liefert der Mincut Algorithmus genau die Zusammenhangszahl des Graphen.
+Zu Beginn, setzen wir für alle Kanten, die Kapazitäten auf 1. Mithilfe des Maxflow Algorithmus (Ford-Fulkerson), wie er in Aufgabe 4 verwendet wurde, können wir nun wie in Aufgabe 2 beschrieben und aus dem max-flow min-cut Theorem folgend, den Mincut berchenen. Da wir alle Kanten zuvor auf 1 gesetzt haben, ist der Mincut genau die Zusammenhangszahl des Graphen, da der Mincut genau der Cut ist, der den Graphen in zwei Teile schneidet und exakt der Cut mit geringster Kapazität. Da hier alle Kapazitäten 1 sind ist der Cut also genau der Cut mit der gerinsten Anzahl an Kanten, demnach entspricht der mincut auch der Zusammenhangszahl.
 
 
 
