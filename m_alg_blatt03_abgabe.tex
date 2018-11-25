@@ -863,7 +863,26 @@ Resulting Graph:
 $\rightarrow$ Max Flow: $170$
 
 
+\section*{Aufgabe 5}
+\subsection*{a)}
+Zu Beginn, setzen wir alle Kanten, welche die Kapazitäten repräsentieren auf 1. Mithilfe des Maxflow-Mincut Algorithmus, wie er in Aufgabe 3 beschrieben wurde, können wir nun den Mincut berchenen. Da wir alle Kanten zuvor auf 1 gesetzt haben, liefert der Mincut Algorithmus genau die Zusammenhangszahl des Graphen.
 
+
+
+\subsection*{b)}
+\begin{lstlisting}
+	function zusammenhangszahl(graph):
+		
+		# set capacities to 1
+		for e in graph.edeges:
+			e.weight = 1
+		
+		# calculate mincut
+		zusammenhangszahl = get_mincut(graph)
+		
+		return zusammenhangszahl
+
+\end{lstlisting}
 
 
 
