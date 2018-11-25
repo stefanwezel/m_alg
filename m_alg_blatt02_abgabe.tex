@@ -1,0 +1,264 @@
+% ----------------------- TODO ---------------------------
+%Template 
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+%\usepackage[ngerman]{babel}
+\usepackage{geometry,forloop,fancyhdr,fancybox,lastpage}
+\usepackage{listings}
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+\geometry{a4paper,left=3cm, right=3cm, top=3cm, bottom=3cm}
+% Diese Daten müssen pro Blatt angepasst werden:
+\newcommand{\NUMBER}{4}
+\usepackage{graphicx}
+%\graphicspath{{maps/}}
+\newcommand{\EXERCISES}{4}
+% Diese Daten müssen einmalig pro Vorlesung angepasst werden:
+\newcommand{\COURSE}{Methoden der Algorithmik}
+%\newcommand{\TUTOR}{Benjamin Coban}
+\newcommand{\STUDENTA}{Stefan Wezel}
+\newcommand{\STUDENTB}{Lukas Günthner}
+%\newcommand{\STUDENTC}{Gwent Krause}
+\newcommand{\DEADLINE}{\date}
+% ----------------------- TODO ---------------------------
+
+
+
+%Math
+\usepackage{amsmath,amssymb,tabularx}
+
+%Figures
+\usepackage{graphicx,tikz,color,float}
+\graphicspath{ {home/stefan/picures/} }
+\usetikzlibrary{shapes,trees}
+
+%Algorithms
+\usepackage[ruled,linesnumbered]{algorithm2e}
+
+%Kopf- und Fußzeile
+\pagestyle {fancy}
+%\fancyhead[L]{Tutor: \TUTOR}
+\fancyhead[C]{\COURSE}
+\fancyhead[R]{\today}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{Seite \thepage}
+
+%Formatierung der Überschrift, hier nichts ändern
+\def\header#1#2{
+	\begin{center}
+		{\Large\bf Übungsblatt #1}\\
+		{(Abgabetermin #2)}
+	\end{center}
+}
+
+%Definition der Punktetabelle, hier nichts ändern
+\newcounter{punktelistectr}
+\newcounter{punkte}
+\newcommand{\punkteliste}[2]{%
+	\setcounter{punkte}{#2}%
+	\addtocounter{punkte}{-#1}%
+	\stepcounter{punkte}%<-- also punkte = m-n+1 = Anzahl Spalten[1]
+	\begin{center}%
+		\begin{tabularx}{\linewidth}[]{@{}*{\thepunkte}{>{\centering\arraybackslash} X|}@{}>{\centering\arraybackslash}X}
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				\thepunktelistectr &
+			}
+			#2 &  $\Sigma$ \\
+			\hline
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				&
+			} &\\
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				&
+			} &\\
+		\end{tabularx}
+	\end{center}
+}
+
+\begin{document}
+	
+	\begin{tabularx}{\linewidth}{m{0.2 \linewidth}X}
+		\begin{minipage}{\linewidth}
+			\STUDENTA\\
+			\STUDENTB\\
+			%\STUDENTC
+		\end{minipage} & \begin{minipage}{\linewidth}
+			\punkteliste{1}{\EXERCISES}
+		\end{minipage}\\
+	\end{tabularx}
+	
+	%\header{Nr. \NUMBER}{\DEADLINE}
+	
+	% ----------------------- TODO ---------------------------
+	% Hier werden die Aufgaben/Lösungen eingetragen:
+	
+	\section*{Aufgabe 1}
+	
+	
+	
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph1.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph2.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph3.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph4.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph5.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph6.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph7.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph8.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph9.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph11.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph12.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph13.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph14.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph15.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph16.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph17.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph18.jpg}
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph19.jpg}
+		Daraus folgt: $\Rightarrow$\\
+		\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe1/graph20.jpg}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	\section*{Aufgabe 2}
+	\subsection*{(a)}
+	
+	\includegraphics[scale=0.6]{/home/stefan/projects/m_alg/maps/map_a.png}
+	
+	\subsection*{(b)}
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_1.png}
+	
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_2}
+	
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_3}
+	
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_4}
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_5}
+	
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_6}
+	
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_7}
+	
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_9}
+	
+	%%%%%%%%%%%%
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_8}
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_10}
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_11}
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_12}
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_13}
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_14}
+	
+	\subsection*{(c)}
+	Die minimalen Kantenkosten betragen insgesamt $65$.\\
+	
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/b_14}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Aufgabe 3}
+\subsection*{(a)}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph1.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph2.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph3.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph4.jpg}
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph5.jpg}
+\begin{figure}[ht]
+	\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph6.jpg}
+	\caption{Min-Cut: 16}
+\end{figure}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph7.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph8.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph9.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph10.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph11.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph12.jpg}
+\includegraphics[scale=0.4]{/home/stefan/projects/m_alg/maps/blatt2_img/aufgabe2/graph13.jpg}
+
+\subsection*{(b)}
+Auch bei negativen Kantengewichten funktioniert der Algorithmus.\\
+Da im Algorithmus Kantengewichte aufaddiert werden, und dann die negativen Kantengewichte, einfach abgezogen werden, und der Algorithmus auch so zu einem Ergebnis kommt, das evtl. zwar negativ, also nicht trivial ist.
+\section*{Aufgabe 4}
+\subsection*{(a)}
+\includegraphics*[scale=.5]{/home/stefan/projects/m_alg/maps/4_a}
+ 
+
+\subsection*{(c)}
+1.Bedingung $\Rightarrow q \geq Max(f_i)$\\
+$i \in \lbrace 0,1,...,q \rbrace$\\
+$Max(f_i) \leq t_i$\\
+
+\includegraphics*[scale=.5]{/home/stefan/projects/m_alg/maps/4_c}
+Kapazitaet $t_0 = f_0$(Anzahl Familienmitglieder)
+	
+\subsection*{(d)}
+\includegraphics*[scale=.5]{/home/stefan/projects/m_alg/maps/4_d}
+\end{document}
