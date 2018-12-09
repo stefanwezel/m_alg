@@ -153,9 +153,38 @@
 
 
 
+\section*{Aufgabe 3}
+\subsection*{(a)}
+Ist $m$ die Anzahl an verschiedenen Motiven ergibt sich folgende Formel zur Berchnung.\\
+
+$\frac{m \cdot \sum_{i=1}^{m}\frac{1}{i}}{24}$\\
+
+Wir nehmen dabei an, dass ein Adventskalender $24$ Türchen hat. Kaufen wir nun einen Adventskalender, erhalten wir also $24$ Motive auf einmal, wobei diese natürlich doppelt vorkommen können. Die Summe im Zähler entsteht durch die Wahrscheinlichkeit einzelne Motive zu treffen und beschreibt deren Erwartungswert. Unser gesamter Nenner ist dann der Erwartungswert, wie viele einzelne Türchen wir öffnen müssen, um alle $m$ Motive zu bekommen. Da wir mit jedem Kalender $24$ bekommen, müssen wir unseren Erwartungswert also noch durch $24$ teilen.
+
+
+\subsection*{(b)}
+\subsubsection*{m=10:}
+$\frac{10 \cdot \sum_{i=1}^{10}\frac{1}{i}}{24} \approx 1.2$
+
+\subsubsection*{m=20:}
+$\frac{20 \cdot \sum_{i=1}^{20}\frac{1}{i}}{24} \approx 3$
+
+\subsubsection*{m=30:}
+$\frac{30 \cdot \sum_{i=1}^{30}\frac{1}{i}}{24} \approx 5$
+
+\subsubsection*{m=40:}
+$\frac{40 \cdot \sum_{i=1}^{40}\frac{1}{i}}{24} \approx 7.1$
 
 
 
+\subsection*{(c)}
+$
+\frac{m \cdot \sum_{i=1}^{m}\frac{1}{i}}{24} = 24
+$\\
+Nun müssen wir also einen Wert für die Summe finden, dass im Zähler 576 steht, um die Gleichung zu erfüllen.\\
+$\Rightarrow \sum = \frac{576}{m}$\\
+Da es sich bei der Summe um die Harmonische Reihe $\mathbb{H}$ handelt können wir diese betrachten und finden heraus, dass gilt $\mathbb{H}_{110} = \frac{576}{110}$.\\
+Damit man 24 Adventskalender kaufen muss, um alle Motive zu erhalten, müsste die Firma also $110$ verschiedene Motive herstellen.
 
 
 \section*{Aufgabe 4}
@@ -164,7 +193,7 @@ $x$ ist so gewählt, dass es immer einen Wert im Intervall $[0,1]$ ergibt, welch
 
 \begin{figure}[h]
 	\includegraphics[scale=.7]{monte_carlo_integration.png}
-	\caption{Für $n \rightarrow \infty$ werden die einzelnen Flächen unendlich klein, und es existieren unendlich viele, dadurch entspricht die Summe dieser Flächen exakt dem Integral. Wählt man $n \leq \infty$ handelt es sich lediglich um eine Approximation des Integrals.}
+	\caption{Für $n \rightarrow \infty$ werden die einzelnen (grün markierten) Flächen unendlich klein, und es existieren unendlich viele, dadurch entspricht die Summe dieser Flächen exakt dem Integral. Wählt man $n \leq \infty$ handelt es sich lediglich um eine Approximation des Integrals.}
 \end{figure}
 
 
