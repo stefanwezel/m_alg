@@ -26,7 +26,7 @@
 \newcommand{\NUMBER}{4}
 \usepackage{graphicx}
 \graphicspath{{/home/stefan/projects/m_alg/}}
-\newcommand{\EXERCISES}{5}
+\newcommand{\EXERCISES}{4}
 % Diese Daten müssen einmalig pro Vorlesung angepasst werden:
 \newcommand{\COURSE}{Methoden der Algorithmik}
 %\newcommand{\TUTOR}{Benjamin Coban}
@@ -155,7 +155,7 @@
 
 \section*{Aufgabe 3}
 \subsection*{(a)}
-Ist $m$ die Anzahl an verschiedenen Motiven ergibt sich folgende Formel zur Berchnung.\\
+Ist $m$ die Anzahl an verschiedenen Motiven, ergibt sich folgende Formel zur Berchnung.\\
 
 $\frac{m \cdot \sum_{i=1}^{m}\frac{1}{i}}{24}$\\
 
@@ -203,41 +203,7 @@ Summieren wir nun diese Wahrscheinlichkeiten auf ergibt sich offensichtlich $\fr
 
 
 
-\subsection*{(c)}
-\begin{lstlisting}
-	# Numerical Integration using Monte Carlo method
-	# define any function here!
-	init f(x)
-	init xmin = 0
-	init xmax = 1
-	
-	# find ymin-ymax
-	init number_of_steps  = 1000000 # choose any large number
-	ymin = f(xmin)
-	ymax = ymin
-	for i in range(number_of_steps):
-		x = xmin + (xmax - xmin) * i / number_of_steps
-		y = f(x)
-		if y < ymin: ymin = y
-		if y > ymax: ymax = y
-		
-	# Monte Carlo
-	init rectangle_area = (xmax - xmin) * (ymax - ymin)
-	init number_of_points = 1000000
-	init counter = 0
-	for j in range(number_of_points):
-		x = xmin + (xmax - xmin) * create_random_number()
-		y = ymin + (ymax - ymin) * create_random_number()
-		if |(y)| <= |(f(x))|:
-			if f(x) > 0 and y > 0 and y <= f(x):
-				counter += 1 # area over x-axis is positive
-			if f(x) < 0 and y < 0 and y >= f(x):
-				counter -= 1 # area under x-axis is negative
-	
-	return rectangle_area * float(ctr) / numPoints
-\end{lstlisting}
-
-
+\subsection*{(c)}b
 \begin{lstlisting}
 function integral(number_of_tests, f):
 	random_number = get_random_number_uniform(0,1)
