@@ -1,0 +1,223 @@
+% ----------------------- TODO ---------------------------
+%Template 
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+%\usepackage[ngerman]{babel}
+\usepackage{geometry,forloop,fancyhdr,fancybox,lastpage}
+\usepackage{listings}
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+\geometry{a4paper,left=3cm, right=3cm, top=3cm, bottom=3cm}
+% Diese Daten müssen pro Blatt angepasst werden:
+\newcommand{\NUMBER}{4}
+\usepackage{graphicx}
+\graphicspath{{/home/stefan/projects/m_alg/}}
+\newcommand{\EXERCISES}{5}
+% Diese Daten müssen einmalig pro Vorlesung angepasst werden:
+\newcommand{\COURSE}{Methoden der Algorithmik}
+%\newcommand{\TUTOR}{Benjamin Coban}
+\newcommand{\STUDENTA}{Stefan Wezel}
+\newcommand{\STUDENTB}{Lukas Günthner}
+%\newcommand{\STUDENTC}{Gwent Krause}
+\newcommand{\DEADLINE}{\date}
+% ----------------------- TODO ---------------------------
+
+
+
+%Math
+\usepackage{amsmath,amssymb,tabularx}
+
+%Figures
+\usepackage{graphicx,tikz,color,float}
+\graphicspath{ {home/stefan/picures/} }
+\usetikzlibrary{shapes,trees}
+
+%Algorithms
+\usepackage[ruled,linesnumbered]{algorithm2e}
+
+%Kopf- und Fußzeile
+\pagestyle {fancy}
+%\fancyhead[L]{Tutor: \TUTOR}
+\fancyhead[C]{\COURSE}
+\fancyhead[R]{\today}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{Seite \thepage}
+
+%Formatierung der Überschrift, hier nichts ändern
+\def\header#1#2{
+	\begin{center}
+		{\Large\bf Übungsblatt #1}\\
+		{(Abgabetermin #2)}
+	\end{center}
+}
+
+%Definition der Punktetabelle, hier nichts ändern
+\newcounter{punktelistectr}
+\newcounter{punkte}
+\newcommand{\punkteliste}[2]{%
+	\setcounter{punkte}{#2}%
+	\addtocounter{punkte}{-#1}%
+	\stepcounter{punkte}%<-- also punkte = m-n+1 = Anzahl Spalten[1]
+	\begin{center}%
+		\begin{tabularx}{\linewidth}[]{@{}*{\thepunkte}{>{\centering\arraybackslash} X|}@{}>{\centering\arraybackslash}X}
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				\thepunktelistectr &
+			}
+			#2 &  $\Sigma$ \\
+			\hline
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				&
+			} &\\
+			\forloop{punktelistectr}{#1}{\value{punktelistectr} < #2 } %
+			{%
+				&
+			} &\\
+		\end{tabularx}
+	\end{center}
+}
+
+\begin{document}
+	
+	\begin{tabularx}{\linewidth}{m{0.2 \linewidth}X}
+		\begin{minipage}{\linewidth}
+			\STUDENTA\\
+			\STUDENTB\\
+			%\STUDENTC
+		\end{minipage} & \begin{minipage}{\linewidth}
+			\punkteliste{1}{\EXERCISES}
+		\end{minipage}\\
+	\end{tabularx}
+	
+	%\header{Nr. \NUMBER}{\DEADLINE}
+	
+	% ----------------------- TODO ---------------------------
+	% Hier werden die Aufgaben/Lösungen eingetragen:
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Aufgabe 4}
+\subsection*{(a)}
+$x$ ist so gewählt, dass es immer einen Wert im Intervall $[0,1]$ ergibt, welche den Abstand zwischen den Werten darstellen. Wenn nun gilt $n \rightarrow \infty$, summieren diese Werte unendlich oft auf, und bekommen so letztendlich die Fläche unter der Funktion, was ja das Integral ist.
+
+\begin{figure}[h]
+	\includegraphics[scale=.7]{monte_carlo_integration.png}
+	\caption{Für $n \rightarrow \infty$ werden die einzelnen Flächen unendlich klein, und es existieren unendlich viele, dadurch entspricht die Summe dieser Flächen exakt dem Integral. Wählt man $n \leq \infty$ handelt es sich lediglich um eine Approximation des Integrals.}
+\end{figure}
+
+
+\subsection*{(b)}
+Da wir von einer uniformen Verteilung ausgehen, können wir die Wahrscheinlichkeit einen bestimmten Punkt zu treffen durch $\frac{1}{n}$ berechnen.\\ 
+Summieren wir nun diese Wahrscheinlichkeiten auf ergibt sich offensichtlich $\frac{1}{n} \cdot \sum_{}^{n}$, was genau unserer Formel entspricht.
+
+
+
+\subsection*{(c)}
+\begin{lstlisting}
+	# Numerical Integration using Monte Carlo method
+	# define any function here!
+	init f(x)
+	init xmin = 0
+	init xmax = 1
+	
+	# find ymin-ymax
+	init number_of_steps  = 1000000 # choose any large number
+	ymin = f(xmin)
+	ymax = ymin
+	for i in range(number_of_steps):
+		x = xmin + (xmax - xmin) * i / number_of_steps
+		y = f(x)
+		if y < ymin: ymin = y
+		if y > ymax: ymax = y
+		
+	# Monte Carlo
+	init rectangle_area = (xmax - xmin) * (ymax - ymin)
+	init number_of_points = 1000000
+	init counter = 0
+	for j in range(number_of_points):
+		x = xmin + (xmax - xmin) * create_random_number()
+		y = ymin + (ymax - ymin) * create_random_number()
+		if |(y)| <= |(f(x))|:
+			if f(x) > 0 and y > 0 and y <= f(x):
+				counter += 1 # area over x-axis is positive
+			if f(x) < 0 and y < 0 and y >= f(x):
+				counter -= 1 # area under x-axis is negative
+	
+	return rectangle_area * float(ctr) / numPoints
+\end{lstlisting}
+
+
+\begin{lstlisting}
+function integral(number_of_tests, f):
+	random_number = get_random_number_uniform(0,1)
+	for i in range(number_of_tests):
+		y = f(random_number)
+		integral += 1 / y
+	return integral
+\end{lstlisting}
+Die Funktion hat eine lineare Laufzeit, da sie genau eine for-Schleife beinhaltet. Da sowohl $f$ als auch $get_random_number_uniform$ in konstanter Zeit ablaufen, und sonst lediglich Vergleiche und eine Summation passieren, welche ebenfalls in konstanter Zeit ablaufen passieren, bleibt die Laufzeit linear.
+
+
+\end{document}
