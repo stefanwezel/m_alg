@@ -210,7 +210,7 @@ function integral(number_of_tests, f):
 	random_number = get_random_number_uniform(0,1)
 	for i in range(number_of_tests):
 		y = f(random_number)
-		integral += y / n
+		integral += y / number_of_tests
 	return integral
 \end{lstlisting}
 Die Funktion hat eine lineare Laufzeit, da sie genau eine for-Schleife mit $n = number\_of\_tests$ Iterationen beinhaltet. Da sowohl $f$ als auch $get_random_number_uniform$ in konstanter Zeit ablaufen, und sonst lediglich Variablenzuweisungen und eine Summation passieren, welche ebenfalls in konstanter Zeit ablaufen passieren, bleibt die Laufzeit linear.
