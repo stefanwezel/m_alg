@@ -111,9 +111,49 @@
 
 \section*{Aufgabe 3}
 
+\subsection*{(a)}
+Da die kovexe Hülle alle Punkte beinhaltet muss für jede Kante, die zwei Punkte verbindet und Element der konvexen Hülle ist gelten, dass alle anderen Punkte auf einer bestimmten Seite dieser Kante sind.\\
+Eine Möglichkeit für einen Algorithmus wäre also jede Mögliche Verbindung zwischen zwei Punkten auf genau diese Eigenschaft zu testen. Dazu wäre aber geschachtelte For-Loops nötig was eher ineffizient wäre.\\
+Eine weitere Möglichkeit wäre folgende:\\
+\begin{itemize}
+	\item Suche nach den Punkten mit geringster x-Koordinate und höchster x-Koordinate.
+	\item Verbinde diese beiden Punkte und teile so die gesamte Menge in zwei Hälften.
+	\item Finde den Punkt mit der geringsten Distanz zu dieser Linie. Dieser Punkt verbunden mit den Endpunkten der Linie bildet nun ein Dreieck. Alle Elemente die dieses Dreieck umschließt können nicht Teil der konvexen Hülle sein und können somit "disqualifiziert" werden.
+	\item im nächsten Schritt wird rekursiv vorgegangen indem man die bisherigen Schritte (ohne 1.) auf die Mengen anwendet, die durch die Linien des Dreiecks entstehen (ohne ursprüngliche Linie), anwendet.
+	\item Dies geschieht so lange, bis keine Punkte mehr übrig sind. Die konvexe Hülle wird dann durch die Punkte gebildet, die nicht "disqualifiziert" wurden.
+\end{itemize}
 
 
+\subsection*{(b)}
+\begin{lstlisting}
+	function convex_hull_recursive(points):
+		
+		if points = Null:
+			return remaining_points
+			
+		x_min = get_min_x(points)
+		x_max = get_max_x(points)
+		
+		line = create_line(x_min, x_max)
+		
+		closest_to_line = points[0]
+		for point in points:
+			if get_dist(point, line) < get_dist(closest_to_line):
+				closest_to_line = point
+		discard_area = create_triangle(x_min, x_max, closest_to_line)
+		
+		remaining_points.append(get_points(points without points in discard_area))
+		
+		points.remove(points in discard_area)
+		
+		return convex_hull(points_above_line)
+		return convex_hull(points_below_line)
+\end{lstlisting}
 
+
+\subsection*{(c)}
+%TODO
+Bei dem Algorithmus handelt es sich um ein divide and conquer Verfahren. Die Laufzeit für einen einzelnen Schritt wird also mit jedem Durchlauf geringer, da zum einen die Menge halbiert wird, und zum anderen Punkte ignoriert werden.
 
 
 
