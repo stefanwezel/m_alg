@@ -152,8 +152,11 @@ Eine weitere Möglichkeit wäre folgende:\\
 
 
 \subsection*{(c)}
-%TODO
-Bei dem Algorithmus handelt es sich um ein divide and conquer Verfahren. Die Laufzeit für einen einzelnen Schritt wird also mit jedem Durchlauf geringer, da zum einen die Menge halbiert wird, und zum anderen Punkte ignoriert werden.
+Bei dem Algorithmus handelt es sich um ein divide and conquer Verfahren. Die Laufzeit für einen einzelnen Schritt wird also mit jedem Durchlauf geringer, da zum einen die Menge halbiert wird, und zum anderen Punkte ignoriert werden.\\
+Im schlechtesten Fall allerdings, also wenn keine Punkte eliminiert werden ist die Laufzeit in $\mathcal{O}(n^2)$, da in jedem Rekursionsschritt in eine Teilmenge die alle Punkte enthält und eine leere geteilt wird.
+Es wird also in jedem Schritt lediglich ein Punkt abgearbeitet, woraus $n$ Rekursionsschritte resultieren. Aufgrund der Tatsache, dass in jedem Schritt alle Punkte betrachtet werden müssen, ergibt sich $\mathcal{O}(n^2)$.\\
+Für die durchscnittliche Laufzeit nutzen wir die Rekursionsgleichung $T(n) = T(a \cdot n) + T(b \cdot n) + c \cdot n$, wobei $a$ und $b$ im Durschnitt gleich $\frac{1}{2}$ sind. $c \cdot n$ beschreibt die Suche nach dem jeweiligen "Pivot" Element. \\
+Wendet man nun das Master Theorem auf die somit entstehende  Rekursionsgleichung $T(n) = 2T(\frac{1}{2}) + T(b \cdot n) + c \cdot n$ an, ergibt sich eine Laufzeit von $\mathcal{O}(n \cdot log\;n)$ für den Fall $c = log_b\;a$, da $a = 2, b=2, c = 1$.
 
 
 
