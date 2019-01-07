@@ -109,6 +109,55 @@
 	% ----------------------- TODO ---------------------------
 	% Hier werden die Aufgaben/Lösungen eingetragen
 
+
+
+\section*{Aufgabe 1}
+\subsection*{(a)}
+Die erste For-Loop färbt zunächst alle Knoten. Jeder Knoten wird dafür zuerst blau eingefärbt, um dannach mit einer bestimmten Wahrscheinlichkeit blau gefärbt zu werden.\\
+Anschließend erneut jeder Knoten in einer zweiten For-Loop betrachtet und überprüft ob dieser rot ist oder alle seine Nachbarn blau sind. Ist einer dieser Fälle wahr, so wird er der Menge $S$ hinzugefügt, bei welcher es sich um eine dominierende Menge handelt.\\
+Die Menge ist eine dominierende, da durch hinzufügen von Knoten, deren Nachbarn alle Blau sind sichergestellt wird, dass für alle benachbarte Knoten nun ein anliegender Knoten in die Menge $S$ aufgenommen wurde.\\
+Wären alle Knoten blau, so würden mit diesem Algorithmus einfach alle Knoten aufgenommen werden, was ebenfalls eine dominierende Menge wäre. Wären alle Knoten rot, so würden ebenfalls alle in $S$ (aufgrund der ersten Bedingung) aufgenommen werden.\\
+Ansonsten werden Rote direkt aufgenommen und deren Nachbarn nicht. Also nur wenn ein Knoten keine roten Nachbarn hat. So ist die dominierende Menge nicht gleich der gesamten Menge an Knoten.
+
+\subsection*{(b)}
+$\frac{n}{n-1}$ %TODO ??????????
+Für den Fall, dass alle bis auf ein Knoten in der Menge sind?
+
+
+\subsection*{(c)}
+%TODO ???????
+
+
+\subsection*{(d)}
+Bei einem Kreis der mit Knotenanzahl $n$ mit $n\;mod\;3=0$ ist die Mächtigkeit der minimalen domininierenden Menge immer $\frac{n}{3}$.
+
+
+
+\subsection*{(e)}
+%TODO DIES IST NUR DER ERWARTUNGSWERT FUER DEN BEST CASE!!!!!!!!!!!!!!!
+$E(|S|)  = \sum_{i=0}^{n} 1 \cdot \frac{1}{3}$ für $p = \frac{1}{3}$ und:\\
+\\
+$E(|S|)  = \sum_{i=0}^{n} 1 \cdot \frac{1}{2}$ für $p = \frac{1}{2}$.
+
+
+\subsection*{(f)}
+Für die Wahrscheinlichkeit $p_1 = \frac{1}{3}$ ist die Approximationsgüte höher also für die Wahrscheinlichkiet $p_2 = \frac{1}{2}$, da es für einen kreisförmigen Graphen optimal ist, wenn genau jeder dritte Punkt rot gefärbt wird. In diesem Fall werden dann nur rote Punkte zu $S$ hinzugefügt werden, und dazwischen immer zwei (zu roten benachbarten) blaue Punkte liegen, die nicht hinzugefügt werden müssen.\\
+Dies würde genau einer minimalen dominierenden Menge entsprechen.\\
+Mit der Wahrscheinlichkeit $p_2$ werden als Erwartungswert die Hälfte aller Punkte zu $S$ hinzugefügt. Selbst im besten Fall, wenn Knoten immer abwechselnd rot und blau gefärbt sind ist dies keine minimale dominierende Menge.\\
+Im schlimmsten Fall jedoch, ist die Güte mit beiden Wahrscheinlichkeiten gleich, da der schlimmste Fall ist, wenn alle Elemente rot bzw. blau sind.
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section*{Aufgabe 3}
 
 \subsection*{(a)}
@@ -156,7 +205,7 @@ Bei dem Algorithmus handelt es sich um ein divide and conquer Verfahren. Die Lau
 Im schlechtesten Fall allerdings, also wenn keine Punkte eliminiert werden ist die Laufzeit in $\mathcal{O}(n^2)$, da in jedem Rekursionsschritt in eine Teilmenge die alle Punkte enthält und eine leere geteilt wird.
 Es wird also in jedem Schritt lediglich ein Punkt abgearbeitet, woraus $n$ Rekursionsschritte resultieren. Aufgrund der Tatsache, dass in jedem Schritt alle Punkte betrachtet werden müssen, ergibt sich $\mathcal{O}(n^2)$.\\
 Für die durchscnittliche Laufzeit nutzen wir die Rekursionsgleichung $T(n) = T(a \cdot n) + T(b \cdot n) + c \cdot n$, wobei $a$ und $b$ im Durschnitt gleich $\frac{1}{2}$ sind. $c \cdot n$ beschreibt die Suche nach dem jeweiligen "Pivot" Element. \\
-Wendet man nun das Master Theorem auf die somit entstehende  Rekursionsgleichung $T(n) = 2T(\frac{1}{2}) + T(b \cdot n) + c \cdot n$ an, ergibt sich eine Laufzeit von $\mathcal{O}(n \cdot log\;n)$ für den Fall $c = log_b\;a$, da $a = 2, b=2, c = 1$.
+Wendet man nun das Master Theorem auf die somit entstehende  Rekursionsgleichung $T(n) = 2T(\frac{1}{2}) + T(b \cdot n) + c \cdot n$ an, ergibt sich eine Laufzeit von $\mathcal{O}(n \cdot log\;n)$ für den Fall $c = log_b\;a$, da $a = 2, b=2, c = 1, d = 0$.
 
 
 
