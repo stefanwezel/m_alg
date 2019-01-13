@@ -161,8 +161,10 @@ Dies tun wir so lange, bis in dem entstehenden Bereich keine Punkte mehr vorhand
 
 
 \subsection*{(b)}
-%TODO laufzeit analysieren... sollte n * log n sein eigentlich
-Die Menge an Punkten, die der Algorithmus im jeden Rekursionsschritt betrachten muss wird immer kleiner. Um wie viel kleiner die Menge wird, hägt dabei vom zufällig gewählten Punkt aus.
+%TODO laufzeit richtig analysieren... sollte n * log n sein eigentlich
+Die Menge an Punkten, die der Algorithmus im jeden Rekursionsschritt betrachten muss wird immer kleiner. Um wie viel kleiner die Menge wird, hägt dabei vom zufällig gewählten Punkt aus.\\
+Die Komplexität des Algoritmus ist $\Theta (n \cdot log \; n)$
+
 
 
 
@@ -227,13 +229,51 @@ Wendet man nun das Master Theorem auf die somit entstehende  Rekursionsgleichung
 \section*{Aufgabe 4}
 \subsection*{(a)}
 $
-B = 6,
-SUM(S) = 3, 
-Sum(S') = 6
+B = 11,\\
+S = \lbrace 2 \rbrace,\\
+S' = \lbrace 2,8\rbrace,\\
+A = \lbrace 2,4,8 \rbrace
 $
 
-
 \subsection*{(b)}
-%TODO
+Unser Alogrithmus berechnet die subset-sum rekursiv für zufällige Teilmengen aus. Es handelt sich also um einen Divide and Conquer Algorithmus. Die Abbruchbedingung für die Rekursion ist, dass die Menge $A$ entweder aus einem oder keinem Element mehr besteht.\\
+Solange dies jedoch noch nicht der Fall ist, wird die Menge $A$ an einem zufällig gewählten Index geteilt.\\
+Anschließend wird der Algorithmus auf die beiden entstanden Teilmengen ausgeführt.\\
+Die Lösung wird dann zusammengesetzt aus den jeweiligen ersten und zweiten Elementen der Teillösungen. Ist das zweite Element dieser Lösung kleiner als $B$, so wird diese ausgegeben. Falls nicht, lediglich der "rechte" Teil der Lösung ausgegeben. Auf diese Weise wird selbstverständlich nicht immer die korrekte Lösung ausgegeben. Es handelt sich also nur um eine Approximation.
+
+\begin{lstlisting}
+function subset-sum(A, B):
+	if A.length == 1:
+		return (A,A[0])
+	if A.length == 0:
+		return (null,0)
+
+
+	random = get-random-integer(1, A.length))
+
+	left = A[:rand]
+	right = A[rand:]
+
+	# calculate subsets recursively
+	sol-left = subset_sum(left,B)
+	sol-right = subset_sum(right,B)
+
+	result = (sol-left[0] + sol-right[0], sol-left[1] + sol-right[1])
+
+	if result[1] < B :	
+		return result
+
+	if sol-left[1] < sol-right[1]:
+		return sol-right
+
+	return sol-left
+\end{lstlisting}
+
+Da es sich bei dem Algorithmus um einen Divide and Conquer Algorithmus handelt, wird die Menge, die in jedem Rekursionsschritt betrachtet wird im Durchschnitt um die Hälfte kleiner.\\
+Im Prinzip wird hier gleich vorgegangen wie beim bereits bekannten Quicksort Algorithmus, daher können wir uns an dessen Laufzeit orientieren.\\
+Aus unserer Rekursionsgleichung 
+$
+2T\cdot \frac{n}{2} + \theta (n)$ mit $a=2, b=2$ und $\theta(n^{log_2\;2}) = \theta (n)$ resultiert nach dem Master Theorem eine Komplexität von $\Theta (n \cdot log\;n)$
+
 
 \end{document}
