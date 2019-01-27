@@ -5,6 +5,13 @@
 %\usepackage[ngerman]{babel}
 \usepackage{geometry,forloop,fancyhdr,fancybox,lastpage}
 \usepackage{float}
+\usepackage{graphics}
+\usepackage{color, colortbl}
+\usepackage{amsmath}
+%\definecolor{name}{system}{definition}
+	
+\definecolor{Gray}{gray}{0.9}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
 \usepackage{listings}
 \lstset{frame=tb,
 	language=Java,
@@ -27,12 +34,12 @@
 \newcommand{\NUMBER}{4}
 \usepackage{graphicx}
 \graphicspath{{/home/stefan/projects/m_alg/}}
-\newcommand{\EXERCISES}{5}
+\newcommand{\EXERCISES}{4}
 % Diese Daten müssen einmalig pro Vorlesung angepasst werden:
 \newcommand{\COURSE}{Methoden der Algorithmik}
 %\newcommand{\TUTOR}{Benjamin Coban}
-\newcommand{\STUDENTA}{Stefan Wezel}
-\newcommand{\STUDENTB}{Lukas Günthner}
+\newcommand{\STUDENTA}{Lukas Günthner}
+\newcommand{\STUDENTB}{Stefan Wezel}
 %\newcommand{\STUDENTC}{Gwent Krause}
 \newcommand{\DEADLINE}{\date}
 % ----------------------- TODO ---------------------------
@@ -114,6 +121,33 @@
 
 \section*{Aufgabe 1}
 \subsection*{(a)}
+
+\begin{itemize}
+\item $max(x_1 - 3x_2 + x_3)$
+
+\item
+$
+2x_1 - x_2 +5x_3 = -2\\
+7x_1 + 3x_2 + 2x_3 \leq -2\\
+1 \leq x_2 \leq 19 ;\; x_1, x_3, \geq 0
+$
+	
+	
+\item
+$
+2x_1 - x_2 +5x_3 = -2\\
+7x_1 + 3x_2 + 2x_3 - s = -2\\
+1 \leq x_2 \leq 19 ;\; x_1, x_3, s \geq 0
+$
+
+\item
+$
+-2x_1 + x_2 -5x_3 = 2\\
+7x_1 + 3x_2 + 2x_3 - s = -2\\
+1 \leq x_2 \leq 19 ;\; x_1, x_3, s \geq 0
+$\\
+
+\item 
 Standard Form:\\
 $
 -2x_1 + x_2 -5x_3 = 2\\
@@ -121,14 +155,40 @@ $
 1 \leq x_2 \leq 19 ;\; x_1, x_3, s \geq 0
 $
 
+
+\end{itemize}
 \subsection*{(b)}
+\begin{itemize}
+\item $max(7x_1 - 2x_2 + x_3)$
+\item
+$
+x_1 - 4x_2 + 3x_3 + \geq 42\\
+x_1 + x_2 - 9x_3 \leq 2\\
+x_1, x_2, x_3 \geq 0
+$
+\\
+\item
+$
+y_1 - y_2 - 4x_2 + 3x_3 + \geq 42\\
+y_1 - y_2 + x_2 - 9x_3 \leq 2\\
+x_1 = y_1 - y_2, y_1, y_2, x_2, x_3 \geq 0
+$
+\\
+\item
+$
+y_1 - y_2 - 4x_2 + 3x_3 - s_1 = 42\\
+y_1 - y_2 + x_2 - 9x_3 \leq 2\\
+x_1 = y_1 - y_2, y_1, y_2, x_2, x_3, s_1 \geq 0
+$
+\\
+\item
 Standard Form:\\
 $
 y_1 - y_2 - 4x_2 + 3x_3 - s_1 = 42\\
 y_1 - y_2 + x_2 - 9x_3 + s_2 = 2\\
 x_1 = y_1 - y_2, y_1, y_2, x_2, x_3, s_1, s_2 \geq 0
 $
-
+\end{itemize}
 
 
 \section*{Aufgabe 2}
@@ -144,7 +204,7 @@ $
 \subsection*{(b)}
 \begin{figure}[H]
 	\includegraphics*{ex06_plot_b}
-	\caption{There is a solution.}
+	\caption{There is a solution at $x_1 = 4, x_2 = 6, \Rightarrow 36$.}
 \end{figure}
 
 
@@ -152,7 +212,7 @@ $
 \subsection*{(c)}
 \begin{figure}[H]
 	\includegraphics*{ex06_plot_c}
-	\caption{There is a solution.}
+	\caption{Unbeschraenkt.}
 \end{figure}
 
 
@@ -160,7 +220,7 @@ $
 \subsection*{(d)}
 \begin{figure}[H]
 	\includegraphics*{ex06_plot_d}
-	\caption{There is a solution.}
+	\caption{There is a solution at $x_1 = 4, x_2 = 6$ and $x_1 = 5, x_2 = 5 \Rightarrow 30$.}
 \end{figure}
 
 
@@ -181,9 +241,188 @@ $
 2x_1 + 2x_2 + x_3 + s_1 = 10\\
 x_1 + 4x_2 + 2x_3 + s_2 = 11\\
 x_1, x_2, x_3, s_1, s_2 \geq 0
+$\\\\
+\\
+\\
+\begin{table}[ht]
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+	\hline \rowcolor{lightgray}
+	& $x_1$ & $x_2$ & $x_3$ & $s_1$ & $s_2$ & b & t \\ 
+	\hline 
+	$s_1$ & 2 & 2 & 1 & 1 & 0 & 10 & 5 \\ 
+	\hline 
+	$s_2$ & 1 & 4 & 2 & 0 & 1 & 11 & $\frac{11}{4}$ \\ 
+	\hline 
+	p & -1 & -2 & -1 & 0 & 0 & 0 &  \\ 
+	\hline 
+\end{tabular} 
+}
+\end{table}
+\\
+\\
+\begin{table}[ht]
+	\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+	\hline \rowcolor{lightgray}
+	& $x_1$ & $x_2$ & $x_3$ & $s_1$ & $s_2$ & b & t \\ 
+	\hline 
+	$s_1$ & $\frac{3}{2}$ & 0 & 1 & 1 & $-\frac{1}{2}$ & $\frac{9}{2}$ & 3 \\ 
+	\hline 
+	$x_2$ & $\frac{1}{4}$ & 1 & $\frac{1}{2}$ & $\frac{1}{4}$ & $\frac{11}{4}$ & 11 & 11 \\ 
+	\hline 
+	p & $-\frac{1}{2}$ & 0 & 0 & 0 & $\frac{1}{2}$ & $\frac{11}{2}$ &  \\ 
+	\hline 
+\end{tabular} 
+}
+\end{table}
+\\
+\\
+\begin{table}[ht]
+	\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+	\hline \rowcolor{lightgray}
+	& $x_1$ & $x_2$ & $x_3$ & $s_1$ & $s_2$ & b & t \\ 
+	\hline 
+	$x_1$ & 1 & 0 & 0 & $\frac{2}{3}$  & -$\frac{1}{3}$ &3 & \\ 
+	\hline 
+	$x_2$ & 0 & 1 & $\frac{1}{2}$ & -$\frac{1}{6}$ & $\frac{1}{3}$ & 2 &  \\ 
+	\hline 
+	p & 0 & 0 & 0 & $\frac{1}{3}$ & $\frac{1}{3}$ & 7 &  \\ 
+	\hline 
+\end{tabular}
+}
+\end{table}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\newpage
+$x_1 = 3, x_2 = 2, x_3 = 0$ \\
+$\Rightarrow$ Maximales Ergebnis: $7$.
+
+
+
+
+
+\section*{Aufgabe 4}
+\subsection*{(a)}
+min $9 x_1 15 x_2 24 x_3$\\
+s.t.$x_1 \leq 0.3$ hoechstens $30\%$ Zutat 1.\\
+$x_2 \leq 0.2$ mindestens $20\%$ Zutat 2.\\
+$x_3 \leq 0.2$ mindestens $20\%$ Zutat 3.\\
+$250 x_1 + 150 x_2 + 20 x_3 \geq 120$ mindestens 120 Gramm Fett.\\
+$300 x_1 + 120 x_2 + 10 x_3 \leq 100$ hoechstens 100 Gramm Zucker.\\
+$40 x_1 + 80 x_2 + 20 x_3 \leq 50$ hoechstens 50 Gramm Salz.\\
+$250 x_1 + 150 x_2 + 20 x_3 \leq 200$ hoechstens 200 Gramm Fett.\\
+\\
+min $9 x_1 15 x_2 24 x_3$\\
+s.t.$-x_1 \leq -0.3$ hoechstens $30\%$ Zutat 1.\\
+$x_2 \leq 0.2$ mindestens $20\%$ Zutat 2.\\
+$x_3 \leq 0.2$ mindestens $20\%$ Zutat 3.\\
+$250 x_1 + 150 x_2 + 20 x_3 \geq 120$ mindestens 120 Gramm Fett.\\
+$-300 x_1 - 120 x_2 - 10 x_3 \geq -100$ hoechstens 100 Gramm Zucker.\\
+$-40 x_1 - 80 x_2 - 20 x_3 \geq -50$ hoechstens 50 Gramm Salz.\\
+$-250 x_1 - 150 x_2 - 20 x_3 \geq -200$ hoechstens 200 Gramm Fett.\\
+
+
+
+
+
+
+\subsection*{(b)}
+min.:\\
+\begin{align}
+	\begin{bmatrix}
+	9\\
+	15\\
+	24
+	\end{bmatrix}^T
+		\begin{bmatrix}
+	x_1\\
+	x_2\\
+	x_3
+	\end{bmatrix}
+\end{align}\\
+s.t.:\\
+\begin{align}
+	\begin{bmatrix} 
+		-1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1\\
+		250 & 150 & 20\\
+		-300 & -120 & -10\\
+		-40 & -80 & -20\\
+		-250 & -150 &-20
+	\end{bmatrix}
+			\begin{bmatrix}
+	x_1\\
+	x_2\\
+	x_3
+	\end{bmatrix}
+	\geq
+			\begin{bmatrix}
+	-0.3\\
+	0.2\\
+	0.2\\
+	120\\
+	-100\\
+	-50\\
+	-200
+	\end{bmatrix}
+\end{align}
+
+\subsection*{(c)}
+max.:\\
+\begin{align}
+			\begin{bmatrix}
+-0.3 &0.2&0.2&120&-100&-50&-200
+\end{bmatrix}
+			\begin{bmatrix}
+y_1\\
+y_2\\
+y_3\\
+y_3\\
+y_5\\
+y_6\\
+y_7
+\end{bmatrix}
+\end{align}\\
+s.t.:\\
+\begin{align}
+\begin{bmatrix}
+-1 &0&0&250&-300&-40&-250\\
+0 &1&0&150&-120&-80&-150\\
+0 &0&1&20&-10&-20&-20\\
+\end{bmatrix}
+			\begin{bmatrix}
+y_1\\
+y_2\\
+y_3\\
+y_3\\
+y_5\\
+y_6\\
+y_7
+\end{bmatrix}
+\leq
+			\begin{bmatrix}
+9\\
+15\\
+24\\
+\end{bmatrix}
+\end{align}
+\\
+max.:
+$-0.3y_1 + 0.2y_2 + 0.2 y_3 + 120 y_4 - 100y_5 - 50 y_6 - 200 y_7$\\
+s.t.:\\
 $
-
-
+-y_1 + 250y_4 - 300 y_5 - 40 y_6 - 250 y_7 \leq 9\\
+y_2 + 150 y_4 - 120 y_5 - 802 y_6 - 150 y_7 \leq 15\\
+y_3 + 20y_4 - 10y_5 - 20 y_6 - 20 y_7 \leq 24
+$
 
 
 
